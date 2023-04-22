@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
-class Queue
+class TwoQueue
 {
     static void Main()
     {
@@ -18,14 +17,28 @@ class Queue
                 {
                     queue.Enqueue(num[1]);
                 }
+                else
+                {
+                    queue2.Enqueue(num[1]);
+                }
             }
             else if (num[0] == 2)
             {
-                Console.WriteLine(queue.Peek());
-                queue.Dequeue();
+                if (num[1] == 1)
+                {
+                    Console.WriteLine(queue.Peek());
+                    queue.Dequeue();
+                }
+                else
+                {
+                    Console.WriteLine(queue2.Peek());
+                    queue2.Dequeue();
+                }
             }
-
-            Console.WriteLine(string.Join(" ", queue));
+            else
+            {
+                Console.WriteLine($"{queue.Count} {queue2.Count}");
+            }
         }
     }
 }
