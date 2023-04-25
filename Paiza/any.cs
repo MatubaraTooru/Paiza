@@ -6,28 +6,32 @@ class Program
     static void Main()
     {
         string[] inputs = Console.ReadLine().Split(' ');
-        Queue<int> q = new Queue<int>();
-        int[] ints = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
-        int l = 0;
-        int max = 0;
-        int sum = 0;
+        Stack<int> q = new Stack<int>();
+        string[] data = Console.ReadLine().Split();
+        int tmp = 0;
+        int i = 0;
+        int j = 0;
 
-        for (int i = 0; i < ints.Length; i++)
+        for (int k = 0; k < data.Length; k++)
         {
-            q.Enqueue(ints[i]);
-            sum += ints[i];
-
-            if (q.Count >= int.Parse(inputs[1]))
+            if (int.TryParse(data[k], out tmp))
             {
-                if (max < sum)
-                {
-                    max = sum;
-                    l = q.Peek();
-                }
-                sum -= q.Dequeue();
+                q.Push(tmp);
+            }
+            else if (data[k] == "+")
+            {
+                i = q.Pop();
+                j = q.Pop();
+                q.Push(i + j);
+            }
+            else if (data[k] == "-")
+            {
+                i = q.Pop();
+                j = q.Pop();
+                q.Push(j - i);
             }
         }
 
-        Console.WriteLine($"{max} {l}");
+        Console.WriteLine(q.Pop());
     }
 }
