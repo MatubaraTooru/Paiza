@@ -5,33 +5,35 @@ class Program
 {
     static void Main()
     {
-        string[] inputs = Console.ReadLine().Split(' ');
-        Stack<int> q = new Stack<int>();
-        string[] data = Console.ReadLine().Split();
-        int tmp = 0;
-        int i = 0;
-        int j = 0;
+        int num = int.Parse(Console.ReadLine());
+        string　brackets = Console.ReadLine();
+        Stack<char> stack = new Stack<char>();
 
-        for (int k = 0; k < data.Length; k++)
+        for (int i = 0; i < brackets.Length; i++)
         {
-            if (int.TryParse(data[k], out tmp))
+            if (num == 1)
             {
-                q.Push(tmp);
+                Console.WriteLine("No");
+                return;
             }
-            else if (data[k] == "+")
+            else if (brackets[i] == '(')
             {
-                i = q.Pop();
-                j = q.Pop();
-                q.Push(i + j);
+                stack.Push(brackets[i]);
             }
-            else if (data[k] == "-")
+            else
             {
-                i = q.Pop();
-                j = q.Pop();
-                q.Push(j - i);
+                if (stack.Count > 0)
+                {
+                    stack.Pop();
+                }
+                else
+                {
+                    Console.WriteLine("No");
+                    return;
+                }
             }
         }
 
-        Console.WriteLine(q.Pop());
+        Console.WriteLine("Yes");
     }
 }
