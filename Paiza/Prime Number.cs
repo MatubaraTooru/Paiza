@@ -6,21 +6,31 @@ class PrimeNumber
     static void Main()
     {
         int num = int.Parse(Console.ReadLine());
-        Prime(num);
+        for (int i = 0; i < num; i++)
+        {
+            if (Prime(int.Parse(Console.ReadLine())))
+            {
+                Console.WriteLine("pass");
+            }
+            else
+            {
+                Console.WriteLine("failure");
+            }
+        }
     }
-    static void Prime(int n)
+    static bool Prime(int n)
     {
         if (n < 2)
         {
-            Console.WriteLine("NO");
+            return false;
         }
         else if (n == 2)
         {
-            Console.WriteLine("YES");
+            return true;
         }
         else if (n % 2 == 0)
         {
-            Console.WriteLine("NO");
+            return false;
         }
         else
         {
@@ -28,11 +38,11 @@ class PrimeNumber
             {
                 if (n % i == 0)
                 {
-                    Console.WriteLine("NO");
-                    return;
+                    return false;
                 }
             }
-            Console.WriteLine("YES");
+            Console.WriteLine(Math.Sqrt(n));
+            return true;
         }
     }
 }
