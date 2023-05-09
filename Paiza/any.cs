@@ -1,39 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
-class Program
+class Any
 {
     static void Main()
     {
-        int num = int.Parse(Console.ReadLine());
-        string　brackets = Console.ReadLine();
-        Stack<char> stack = new Stack<char>();
+        var num = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+        int[] data = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+        Queue<int> employee = new Queue<int>();
+        Queue<int> time = new Queue<int>();
 
-        for (int i = 0; i < brackets.Length; i++)
+        for (int i = 1; i <= data.Max(); i++)
         {
-            if (num == 1)
+            if (employee.Count == num[1])
             {
-                Console.WriteLine("No");
-                return;
+                employee.Dequeue();
             }
-            else if (brackets[i] == '(')
+            if (time.Peek() == i)
             {
-                stack.Push(brackets[i]);
+                time.Dequeue();
+                employee.Enqueue(1);
+                Console.WriteLine(employee.Count(x => x == 1));
             }
             else
             {
-                if (stack.Count > 0)
-                {
-                    stack.Pop();
-                }
-                else
-                {
-                    Console.WriteLine("No");
-                    return;
-                }
+                employee.Enqueue(0);
             }
         }
-
-        Console.WriteLine("Yes");
     }
 }
