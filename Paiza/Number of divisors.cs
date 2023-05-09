@@ -6,25 +6,15 @@ class NumberofDivisors
     static void Main()
     {
         int n = int.Parse(Console.ReadLine());
-        List<int> numbers = new List<int>();
+        int count = 0;
         for (int i = 2; i < Math.Sqrt(n); i++)
         {
-            int tmp = 0;
-            while (n % i == 0)
+            if (n % i == 0)
             {
-                n /= i;
-                tmp++;
+                count++;
             }
-            numbers.Add(tmp);
         }
 
-        int ans = numbers[0] + 1;
-
-        for (int i = 1; i < numbers.Count; i++)
-        {
-            ans *= (numbers[i] + 1);
-        }
-
-        Console.WriteLine(ans);
+        Console.WriteLine(count);
     }
 }
