@@ -7,7 +7,7 @@ class NumberofDivisors
     {
         int n = int.Parse(Console.ReadLine());
         int count = 0;
-        for (int i = 2; i < Math.Sqrt(n); i++)
+        for (int i = 2; i * i < n; i++)
         {
             if (n % i == 0)
             {

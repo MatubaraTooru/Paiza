@@ -1,32 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 class Any
 {
     static void Main()
     {
-        var num = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
-        int[] data = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
-        Queue<int> employee = new Queue<int>();
-        Queue<int> time = new Queue<int>();
+        int n = int.Parse(Console.ReadLine());
+        int[] a = new int[n];
 
-        for (int i = 1; i <= data.Max(); i++)
+        for (int i = 0; i < n; i++)
         {
-            if (employee.Count == num[1])
-            {
-                employee.Dequeue();
-            }
-            if (time.Peek() == i)
-            {
-                time.Dequeue();
-                employee.Enqueue(1);
-                Console.WriteLine(employee.Count(x => x == 1));
-            }
-            else
-            {
-                employee.Enqueue(0);
-            }
+            a[i] = int.Parse(Console.ReadLine());
+        }
+
+        int gcd = a[0];
+        for (int i = 1; i < n; i++)
+        {
+            gcd = GCD(gcd, a[i]);
+        }
+
+        Console.WriteLine(gcd);
+    }
+
+    static int GCD(int a, int b)
+    {
+        if (b == 0)
+        {
+            return a;
+        }
+        else
+        {
+            return GCD(b, a % b);
         }
     }
 }
