@@ -1,35 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
 
 class Any
 {
     static void Main()
     {
-        int n = int.Parse(Console.ReadLine());
-        int[] a = new int[n];
+        var data = int.Parse(Console.ReadLine());
+        var intlist = new List<int>();
 
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i <  data; i++)
         {
-            a[i] = int.Parse(Console.ReadLine());
+            int n = int.Parse(Console.ReadLine());
+            if (n % 2 != 0)
+            {
+                intlist.Add(n);
+            }
         }
-
-        int gcd = a[0];
-        for (int i = 1; i < n; i++)
+        intlist.Sort();
+        foreach (int n in intlist)
         {
-            gcd = GCD(gcd, a[i]);
-        }
-
-        Console.WriteLine(gcd);
-    }
-
-    static int GCD(int a, int b)
-    {
-        if (b == 0)
-        {
-            return a;
-        }
-        else
-        {
-            return GCD(b, a % b);
+            Console.WriteLine(n);
         }
     }
 }

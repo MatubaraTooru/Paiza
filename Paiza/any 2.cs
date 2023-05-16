@@ -12,7 +12,7 @@ class Any2
 
         for (long i = 2; i * i < n; i++)
         {
-            IsPrime();
+            
         }
     }
     static long IsPrime(long n)
