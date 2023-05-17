@@ -6,20 +6,20 @@ class Any
     static void Main()
     {
         var data = int.Parse(Console.ReadLine());
-        var intlist = new List<int>();
+        var set = new HashSet<string>();
 
-        for (int i = 0; i <  data; i++)
+        for (int i = 0; i < data; i++)
         {
-            int n = int.Parse(Console.ReadLine());
-            if (n % 2 != 0)
+            var str = Console.ReadLine();
+            if (set.Contains(str))
             {
-                intlist.Add(n);
+                Console.WriteLine("NO");
             }
-        }
-        intlist.Sort();
-        foreach (int n in intlist)
-        {
-            Console.WriteLine(n);
+            else
+            {
+                set.Add(str);
+                Console.WriteLine("YES");
+            }
         }
     }
 }
