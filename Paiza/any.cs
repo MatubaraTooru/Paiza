@@ -5,21 +5,15 @@ class Any
 {
     static void Main()
     {
-        var data = int.Parse(Console.ReadLine());
-        var set = new HashSet<string>();
+        var data = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
 
-        for (int i = 0; i < data; i++)
+        if (data[0] % data[1] == data[2])
         {
-            var str = Console.ReadLine();
-            if (set.Contains(str))
-            {
-                Console.WriteLine("NO");
-            }
-            else
-            {
-                set.Add(str);
-                Console.WriteLine("YES");
-            }
+            Console.WriteLine($"1 {-(data[0] / data[1])}");
+        }
+        else
+        {
+            Console.WriteLine($"{-(data[1] / data[0])}");
         }
     }
 }
