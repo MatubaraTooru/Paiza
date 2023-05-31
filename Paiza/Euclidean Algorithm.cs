@@ -17,11 +17,11 @@ class EuclideanAlgorithm
 
     static int GCD(int a, int b)
     {
-        if (b == 0)
+        if (b != 0)
         {
-            return a;
+            return GCD(b, a % b);
         }
 
-        return GCD(b, a % b);
+        return a;
     }
 }
