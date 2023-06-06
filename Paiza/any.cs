@@ -5,15 +5,22 @@ class Any
 {
     static void Main()
     {
-        var data = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+        Console.ReadLine();
+        var intArray = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
 
-        if (data[0] % data[1] == data[2])
+        for (int i = 0; i < intArray.Length - 2; i++)
         {
-            Console.WriteLine($"1 {-(data[0] / data[1])}");
-        }
-        else
-        {
-            Console.WriteLine($"{-(data[1] / data[0])}");
+            for (int j = intArray.Length - 1; j > 0; j--)
+            {
+                if (intArray[j - 1] > intArray[j])
+                {
+                    var temp = intArray[j - 1];
+                    intArray[j - 1] = intArray[j];
+                    intArray[j] = temp;
+                }
+            }
+
+            Console.WriteLine(string.Join(" ", intArray));
         }
     }
 }
